@@ -1,0 +1,20 @@
+
+## 개발서버 실행 (Local)
+
+node sodabox --port 3300
+node sodabox-socket --port 3400 --channel CH001 --server http://sodaboxsocket.allypost.com:3400
+
+
+## SODABOX 설치
+
+<link rel="stylesheet" media="screen" type="text/css" href="http://sodabox.allypost.com:3300/css/style.css"/>
+
+<script type="text/javascript" src="http://sodabox.allypost.com:3300/js/sodabox.js" charset="utf-8" ></script>
+<!-- div id='SODABOX_SCREEN' style='width:100%'> </div -->
+<script language="javascript">
+SODABOX.init();
+</script>
+
+## EC2 접속
+ssh -i sodaboxkey.pem ec2-user@ec2-23-20-135-233.compute-1.amazonaws.com
+

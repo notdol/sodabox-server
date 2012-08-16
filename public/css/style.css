@@ -1,0 +1,115 @@
+.sodabox {
+    position: fixed;
+	position: expression("absolute");
+	width: 310px;
+	display: none;
+}
+
+.sodabox_head {
+	cursor: pointer; cursor: hand;
+	background-color: #f99d39;
+	padding: 7px;
+	color: #ffffff;
+	border-right: 1px solid #f99d39;
+	border-left: 1px solid #f99d39;
+	font-family: 'Lucida Grande', sans-serif; 
+	text-align: center;
+}
+
+.sodabox_blink {
+	background-color: #176689;
+	border-right: 1px solid #176689;
+	border-left: 1px solid #176689;
+}
+
+.sodabox_content {
+	font-family: arial, sans-serif;
+	font-size: 13px;
+	color: #333333;
+	height: 200px;
+	overflow-y: auto;
+	overflow-x: auto;
+	padding: 7px;
+	border-left: 1px solid #cccccc;
+	border-right: 1px solid #cccccc;
+	border-bottom: 1px solid #eeeeee;
+	background-color: #ffffff;
+	line-height: 1.3em;
+	text-align: left;
+}
+
+.sodabox_input {
+	padding: 4px 4pt 4px 4px;
+	background-color: #fffffa;
+	border-left: 1px solid #cccccc;
+	border-right: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	text-align: center;
+}
+
+.sodabox_textarea {
+	height: 30px;
+	padding: 0px 0pt 0px 0px;
+	border: 1px solid #9C9999;
+	margin: 0px;
+	overflow: hidden;
+	width: 100%; /* 100%; 289px; */
+}
+
+.sodabox_textareaselected {
+	border: 2px solid #f99d39;
+	font-family: 'Lucida Grande', sans-serif; 
+	margin: 0;
+}
+
+.sodabox_message {
+	margin-left: 1em;
+}
+
+.sodabox_info {
+	margin-left: -1em;
+	color: #666666;
+}
+
+.sodabox_messagefrom {
+	margin-left: -1em;
+	font-weight: bold;
+}
+
+.sodabox_messagecontent {
+	
+}
+.sodabox_systemcontent {
+	/*font-style:italic; */
+	font-size:90%;
+	color: #808080;
+}
+.sodabox_messagetime {
+	/*font-style:italic; */
+	font-family: Verdana, Arial, "Bitstream Vera Sans", sans-serif;
+	color: gray;
+	font-size:75%
+}
+
+.sodabox_userlink a {
+	color: #CC6714;
+	text-decoration: none;
+}
+
+
+.sodabox_options {
+	float: right;
+}
+
+.sodabox_options a {
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	font-family: 'Lucida Grande', sans-serif; /*Verdana, Arial, "Bitstream Vera Sans", sans-serif; */
+}
+
+.sodabox_title {
+	/*float: left; */
+	font-family: 'Lucida Grande', sans-serif; 
+	text-align: center;
+} 

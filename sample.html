@@ -1,0 +1,32 @@
+<html>
+<body>
+<br>
+	<a href="javascript:window.open('http://www.naver.com','AAA');">Click here
+    to open pop-up</a>
+<br>You can turn the above bad code into a friendly pop-up by moving the JavaScript into the OnClick attribute:
+<br>
+<a href="http://www.naver.com" onClick="javascript:window.open(this.href+aa.fn_a(),'AAA'); return false;">Click here to open pop-up</a>
+<br>
+<a href="http://www.google.com/"
+    onclick="return !window.open(aa.fn_a(), 'Goasdfasdogle', 'width=500,height=500')"
+    target="_blank">
+    asdfasdf
+</a>
+<br>
+<a href="#"
+    onclick="return !window.open(aa.fn_a(),'SODABOX_OAUTH','menubar=no,location=no,resizable=yes,scrollbars=yes,status=yes,width=800,height=450')"
+    target="_blank">
+    afasdfasdasdfasdasdfasdfasdf
+</a>
+
+<script type="text/javascript">
+window.open('http://www.naver.com','AAA');
+
+var aa = {
+	fn_a : function(){
+		return "http://www.naver.com?abcde=eeee";
+	}
+};
+</script>
+</body>
+</html>
