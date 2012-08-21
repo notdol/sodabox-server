@@ -7,9 +7,9 @@ options = {
 }
 **/
 
-module.exports = function(options) {
+module.exports = function(options, cbFn) {
 	
-	var rootPath = 'SODABOX_SOCKETS';
+	var rootPath = '/SODABOX_SOCKETS';
 
 	var ZooKeeper = require(__dirname+'/node_modules/zookeeper');
 	
@@ -19,6 +19,9 @@ module.exports = function(options) {
 		debug_level: ZooKeeper.ZOO_LOG_LEVEL_WARNING,
 		host_order_deterministic: false
 	});
+
+
+	console.log(options);
 
 	zk.connect(function (err) {
 		if(err) throw err;
@@ -33,9 +36,10 @@ module.exports = function(options) {
 				zk.a_create (rootPath, null, ZooKeeper.ZOO_PERSISTENT, function (rc, error, path)  {
 					if (rc != 0) {
 						console.log ("zk node create result: %d, error: '%s', path=%s", rc, error, path);
-						createServerZNode();
+						// ERROR !!!!
 					} else {
 						console.log ("created zk node %s", path);
+						createServerZNode();
 					}
 				});
 			}else{
@@ -47,36 +51,53 @@ module.exports = function(options) {
 
 	var createServerZNode = function(){
 
-		zk.a_create (rootPath+"/"+options.host+":"+options.port, options.channel, ZooKeeper.ZOO_EPHEMERAL, function (rc, error, path)  {
-			if (rc != 0) {
-				console.log ("zk node create result: %d, error: '%s', path=%s", rc, error, path);
-			} else {
-				console.log ("created zk node %s", path);
-			}
+		console.log('PATH - '+rootPath+"/"+options.host+":"+options.port);
+		zk.aw_exists(rootPath, 
+			function ( type, state, path ){
+				console.log('WATCH '+type+','+state+','+path);
+
+			}, 
+			function ( rc, error, stat ){
+				console.log("---- "+rc+", "+error+", "+stat );
+				zk.a_create (rootPath+"/"+options.host+":"+options.port, options.channel, ZooKeeper.ZOO_EPHEMERAL, function (rc, error, path)  {
+					if (rc != 0) {
+						console.log ("---- zk node create result: %d, error: '%s', path=%s", rc, error, path);
+						// ERROR
+					} else {
+						console.log ("---- created zk node %s", path);
+						getSocketServers();
+						
+					}
+
+					
+
+
+			});
 		});
 	};
 
-	var close = function(){
-		zk.clos();
-	};
 
 	var getSocketServers = function(){
-		zk.a_get_children(rootPath,null,function(rc,error,children){
+		zk.a_get_children(rootPath,null,
+			function(rc,error,children){
 			var result=[];
+			var ttt = '';
+			console.log(rc+','+error+','+children);
 			if(rc==0){
+
 				children.forEach(function(child){
+					ttt = ttt + ' / '+child;
 					console.log(' >>> '+child);
-				}
+				});
+				cbFn(ttt);
 			}
-		}
+
+		});
+
 	};
 
-	return {
-		getSocketServers : function(cb){
-			return this.getSocketServers();
-		}
-	};
+	return false;
 
-});
+};
 
 
