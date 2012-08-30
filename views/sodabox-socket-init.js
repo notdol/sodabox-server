@@ -18,7 +18,7 @@ options = {
 }
 **/
 
-module.exports = function(options) {
+module.exports = function(zk, options) {
 	
 	var SOCKET_SERVER_PATH = '/SOCKET';
 	var MSGQUE_SERVER_PATH = '/MSGQUE';
@@ -27,7 +27,7 @@ module.exports = function(options) {
 	
 	var zk = new ZooKeeper({
 		connect: options.connect,
-		timeout: 1000000, // @ TODO 어느 정도까지 짧아야 하나?
+		timeout: 1000, // @ TODO 어느 정도까지 짧아야 하나?
 		debug_level: ZooKeeper.ZOO_LOG_LEVEL_WARNING,
 		host_order_deterministic: false
 	});
